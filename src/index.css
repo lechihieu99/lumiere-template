@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-modern: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Great Vibes", cursive;
+  
+  --color-luxury-gold: #D4AF37;
+  --color-luxury-cream: #FDFBF7;
+  --color-luxury-charcoal: #1A1A1A;
+  --color-luxury-sage: #8A9A86;
+  --color-luxury-blush: #F4EBE8;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-luxury-cream);
+  color: var(--color-luxury-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for clean preview */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
