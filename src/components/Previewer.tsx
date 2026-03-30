@@ -14,9 +14,9 @@ export function Previewer() {
   const [device, setDevice] = useState<Device>('desktop');
   const [language, setLanguage] = useState<'EN' | 'VI'>('EN');
   const { items, addToCart, setIsCartOpen } = useCart();
-  
+
   const template = templates.find(t => t.id === id);
-  
+
   if (!template) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -35,7 +35,7 @@ export function Previewer() {
       {/* Toolbar */}
       <div className="h-16 flex-shrink-0 border-b border-white/10 flex items-center justify-between px-6">
         <div className="flex items-center space-x-4">
-          <button 
+          <button
             onClick={() => navigate('/')}
             className="p-2 hover:bg-white/10 rounded-full transition-colors"
           >
@@ -44,9 +44,9 @@ export function Previewer() {
           <div className="h-6 w-px bg-white/20 mx-2" />
           <span className="font-display text-lg tracking-wide">{language === 'EN' ? template.name : template.name_vi}</span>
         </div>
-        
+
         <div className="flex items-center space-x-2 bg-white/5 p-1 rounded-lg">
-          <button 
+          <button
             onClick={() => setDevice('desktop')}
             className={clsx(
               "p-2 rounded-md transition-all",
@@ -55,7 +55,7 @@ export function Previewer() {
           >
             <Monitor className="w-4 h-4" />
           </button>
-          <button 
+          <button
             onClick={() => setDevice('tablet')}
             className={clsx(
               "p-2 rounded-md transition-all",
@@ -64,7 +64,7 @@ export function Previewer() {
           >
             <Tablet className="w-4 h-4" />
           </button>
-          <button 
+          <button
             onClick={() => setDevice('mobile')}
             className={clsx(
               "p-2 rounded-md transition-all",
@@ -74,24 +74,24 @@ export function Previewer() {
             <Smartphone className="w-4 h-4" />
           </button>
         </div>
-        
+
         <div className="flex items-center space-x-6">
           <div className="flex items-center space-x-2 text-sm font-medium tracking-wide">
-            <button 
+            <button
               onClick={() => setLanguage('EN')}
               className={`transition-colors ${language === 'EN' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
             >
               EN
             </button>
             <span className="text-gray-600">|</span>
-            <button 
+            <button
               onClick={() => setLanguage('VI')}
               className={`transition-colors ${language === 'VI' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
             >
               VI
             </button>
           </div>
-          <button 
+          <button
             onClick={() => setIsCartOpen(true)}
             className="relative p-2 text-gray-400 hover:text-white transition-colors"
           >
@@ -103,7 +103,7 @@ export function Previewer() {
             )}
           </button>
           <div className="h-6 w-px bg-white/20" />
-          <a 
+          <a
             href={`/render/${id}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -112,7 +112,7 @@ export function Previewer() {
             <ExternalLink className="w-4 h-4 mr-2" />
             {language === 'EN' ? 'Open in new tab' : 'Mở trong tab mới'}
           </a>
-          <button 
+          <button
             onClick={() => addToCart(template, 1)}
             className="px-6 py-2.5 bg-white text-black text-xs font-medium tracking-widest uppercase hover:bg-gray-200 transition-colors"
           >
@@ -125,7 +125,7 @@ export function Previewer() {
 
       {/* Preview Area */}
       <div className="flex-1 overflow-hidden bg-[#0A0A0A] flex items-center justify-center p-4 md:p-8">
-        <div 
+        <div
           className={clsx(
             "bg-white h-full w-full transition-all duration-500 ease-in-out shadow-2xl rounded-sm overflow-hidden",
             device === 'desktop' && "max-w-[100%]",
@@ -133,8 +133,9 @@ export function Previewer() {
             device === 'mobile' && "max-w-[375px]"
           )}
         >
-          <iframe 
-            src={`/render/${id}`}
+          <iframe
+            // src={`/render/${id}`}
+            src={`${window.location.origin}/render/${id}`}
             className="w-full h-full border-none"
             title={`${template.name} Preview`}
           />
